@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script defer src="./script.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <title>Weather App</title>
+  </head>
+  <body>
+    <h1>AJAX Weather Lab</h1>
+    <main>
+      <p>Weather For:</p>
+      <p id="weatherFor"></p>
+      <p>Temperature:</p>
+      <p id="temperature"></p>
+      <p>Feels Like:</p>
+      <p id="feelsLike"></p>
+      <p>Weather:</p>
+      <p id="weather"></p>
+    </main>
+    <form>
+        <label>Weather for City:
+            <input type="text" placeholder="New York, NY ... etc">
+        </label>
+        <input type="submit" value="Get Weather Info">
+    </form>
+    <label for ="forecast">Select a Forecast range:</label>
+    <select name="forecast" id="forecast">
+      <option value="selector">Select a Forecast Duration</option>
+      <option value="current">Current/One Day</option>
+      <option value="two_day">Two Days</option>
+      <option value="three_days">Three Days</option>
+      <option value="four_days">Four Days</option>
+      <option value="five_days">Five Days</option>
+    </select>
+  </body>
+</html>
