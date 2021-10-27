@@ -1,8 +1,49 @@
-form {
-    margin: 20px 0px;
+* {
+    box-sizing: border-box;
 }
 
-input{
-    border-color: black;
-    border-width: 3px;
+body {
+    height: 100%;
+    margin: 0;
+    text-align: center;
+    background: linear-gradient(to top, #58151A, #BC2909, #BA6D09, #71A8EE, #3072EB, #1552C6, #0542A8);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Patrick Hand';
+}
+
+.page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+.content-wrap {
+    padding-bottom: 2.5rem;
+}
+
+h1 {
+    margin-top: 50px;
+    color: white;
+    font-size: 3rem;
+    text-shadow: 3px 3px black;
+}
+
+label {
+    font-size: 20px;
+    color:rgb(201, 185, 201);
+    font-weight: 500px;
+}
+.type-area {
+    margin-top: 50px;
+    font-family: 'Patrick Hand';
+    font-size: 16px;
+}
+
+input {
+    height: 30px;
+}
+
+select {
+    margin-left: 25px;
+    margin-top: 15px;
 }

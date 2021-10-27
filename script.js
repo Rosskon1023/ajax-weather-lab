@@ -41,6 +41,7 @@ const $weather = $('#weather');
 const $form = $('form');
 const $input = $('input[type="text"]');
 const $main = $('main'); 
+const $h2 = $('h2');
 
 // console.log($.ajax(`${BASE_URL}?q=London&appid=${API_KEY}`));
 
@@ -87,122 +88,319 @@ function dayOfWeek(index) {
 
 function render_current(index) {
     let d = new Date();
+    $h2.html(`Current Weather For: <strong>${weatherData.city.name}</strong>`);
     $main.html (`
-        <p>Current Weather For: <strong>${weatherData.city.name}</strong></p>
-        <p id="weatherFor"></p>
-        <p>Temperature: ${weatherData.list[0].main.temp}</p>
-        <p id="temperature"></p>
-        <p>Feels Like: ${weatherData.list[0].main.feels_like}</p>
-        <p id="feelsLike"></p>
-        <p>Sky Cover: ${weatherData.list[0].weather[0].description}</p>
-        <p id="weather"></p>
-    `)
-}
+        <section class="flex-item">
+            <h3 class ="day-name">${weekDays[0]}</h3>
+            <h4>Temperature</h4>
+            <p id="temp">${weatherData.list[0].main.temp}&#8457</p>
+            <hr>
+            <h4>Feels Like</h4>
+            <p id="feels-like">${weatherData.list[0].main.feels_like}&#8457</p>
+            <hr>
+            <h4>Sky Cover</h4>
+            <p id="sky-cover">${weatherData.list[0].weather[0].description}</p>
+        </section>
+    `);
+    $main.css({
+        "display": "flex",
+        "flex-wrap":"wrap",
+        "justify-content":"center"
+    });
+    const $day = $(".day-name");
+    $day.css({
+        "margin-top":"2px",
+        "margin-bottom":"10px",
+        "font-size": "30px",
+        "color":"white"
+    });
+    const $flex = $('.flex-item');
+    $flex.css({
+        "border-radius": "15px",
+        "padding": "1px",
+        "margin": "2px",
+        "height": "400px",
+        "width": "240px",
+        "background-color": "#c4a78d",
+        "border": "solid",
+        "box-shadow": "5px 5px 2px black",
+        "font-size": "18px"
+    });
+};
 
 function render_twoday() {
+    $h2.html(`Current Weather For: <strong>${weatherData.city.name}</strong>`);
     $main.html (`
-        <p>Weather For: <strong>${weatherData.city.name}</strong></p>
-        <p id="weatherFor"></p>
-        <p>Temperature:<br> 
-            ${weekDays[0]}: ${weatherData.list[0].main.temp}<br>
-            ${weekDays[1]}: ${weatherData.list[8].main.temp}
-        </p>
-        <p id="temperature"></p>
-        <p>Feels Like:<br>
-            ${weekDays[0]}: ${weatherData.list[0].main.feels_like}<br>
-            ${weekDays[1]}: ${weatherData.list[8].main.feels_like}
-        </p>
-        <p id="feelsLike"></p>
-        <p>Sky Cover:<br>
-            ${weekDays[0]}: ${weatherData.list[0].weather[0].description}<br>
-            ${weekDays[1]}: ${weatherData.list[8].weather[0].description}
-        </p>
-        <p id="weather"></p>
-    `)
+        <section class="flex-item">
+            <h3 class ="day-name">${weekDays[0]}</h3>
+            <h4>Temperature</h4>
+            <p id="temp">${weatherData.list[0].main.temp}&#8457</p>
+            <hr>
+            <h4>Feels Like</h4>
+            <p id="feels-like">${weatherData.list[0].main.feels_like}&#8457</p>
+            <hr>
+            <h4>Sky Cover</h4>
+            <p id="sky-cover">${weatherData.list[0].weather[0].description}</p>
+        </section>
+        <section class="flex-item">
+            <h3 class ="day-name">${weekDays[1]}</h3>
+            <h4>Temperature</h4>
+            <p id="temp">${weatherData.list[8].main.temp}&#8457</p>
+            <hr>
+            <h4>Feels Like</h4>
+            <p id="feels-like">${weatherData.list[8].main.feels_like}&#8457</p>
+            <hr>
+            <h4>Sky Cover</h4>
+            <p id="sky-cover">${weatherData.list[8].weather[0].description}</p>
+        </section>
+    `);
+    $main.css({
+        "display": "flex",
+        "flex-wrap": "wrap",
+        "justify-content": "space-evenly"
+    });
+    const $day = $(".day-name");
+    $day.css({
+        "margin-top":"2px",
+        "margin-bottom":"10px",
+        "font-size": "30px",
+        "color":"white"
+    });
+    const $flex = $(".flex-item");
+    $flex.css({
+        "border-radius": "15px",
+        "padding": "1px",
+        "margin": "2px",
+        "height": "400px",
+        "width": "240px",
+        "background-color": "#c4a78d",
+        "border": "solid",
+        "box-shadow": "5px 5px 2px black",
+        "font-size": "18px"
+    });
 }
 
 function render_threeday() {
     let d = new Date();
+    $h2.html(`Current Weather For: <strong>${weatherData.city.name}</strong>`);
     $main.html (`
-        <p>Weather For: <strong>${weatherData.city.name}</strong></p>
-        <p id="weatherFor"></p>
-        <p>Temperature:<br> 
-            ${weekDays[0]}: ${weatherData.list[0].main.temp}<br>
-            ${weekDays[1]}: ${weatherData.list[8].main.temp}<br>
-            ${weekDays[2]}: ${weatherData.list[16].main.temp}
-        </p>
-        <p id="temperature"></p>
-        <p>Feels Like:<br>
-            ${weekDays[0]}: ${weatherData.list[0].main.feels_like}<br>
-            ${weekDays[1]}: ${weatherData.list[8].main.feels_like}<br>
-            ${weekDays[2]}: ${weatherData.list[16].main.feels_like}
-        </p>
-        <p id="feelsLike"></p>
-        <p>Sky Cover:<br>
-            ${weekDays[0]}: ${weatherData.list[0].weather[0].description}<br>
-            ${weekDays[1]}: ${weatherData.list[8].weather[0].description}<br>
-            ${weekDays[2]}: ${weatherData.list[16].weather[0].description}
-        </p>
-        <p id="weather"></p>
-    `)
+        <section class="flex-item">
+            <h3 class ="day-name">${weekDays[0]}</h3>
+            <h4>Temperature</h4>
+            <p id="temp">${weatherData.list[0].main.temp}&#8457</p>
+            <hr>
+            <h4>Feels Like</h4>
+            <p id="feels-like">${weatherData.list[0].main.feels_like}&#8457</p>
+            <hr>
+            <h4>Sky Cover</h4>
+            <p id="sky-cover">${weatherData.list[0].weather[0].description}</p>
+        </section>
+        <section class="flex-item">
+            <h3 class ="day-name">${weekDays[1]}</h3>
+            <h4>Temperature</h4>
+            <p id="temp">${weatherData.list[8].main.temp}&#8457</p>
+            <hr>
+            <h4>Feels Like</h4>
+            <p id="feels-like">${weatherData.list[8].main.feels_like}&#8457</p>
+            <hr>
+            <h4>Sky Cover</h4>
+            <p id="sky-cover">${weatherData.list[8].weather[0].description}</p>
+        </section>
+        <section class="flex-item">
+            <h3 class ="day-name">${weekDays[2]}</h3>
+            <h4>Temperature</h4>
+            <p id="temp">${weatherData.list[16].main.temp}&#8457</p>
+            <hr>
+            <h4>Feels Like</h4>
+            <p id="feels-like">${weatherData.list[16].main.feels_like}&#8457</p>
+            <hr>
+            <h4>Sky Cover</h4>
+            <p id="sky-cover">${weatherData.list[16].weather[0].description}</p>
+        </section>
+    `);
+    $main.css({
+        "display": "flex",
+        "flex-wrap": "wrap",
+        "justify-content": "space-evenly"
+    });
+    const $day = $(".day-name");
+    $day.css({
+        "margin-top":"2px",
+        "margin-bottom":"10px",
+        "font-size": "30px",
+        "color":"white"
+    });
+    const $flex = $(".flex-item");
+    $flex.css({
+        "border-radius": "15px",
+        "padding": "1px",
+        "margin": "2px",
+        "height": "400px",
+        "width": "240px",
+        "background-color": "#c4a78d",
+        "border": "solid",
+        "box-shadow": "5px 5px 2px black",
+        "font-size": "18px"
+    });
 }
 
 function render_fourday() {
     let d = new Date();
+    $h2.html(`Current Weather For: <strong>${weatherData.city.name}</strong>`);
     $main.html (`
-        <p>Weather For: <strong>${weatherData.city.name}</strong></p>
-        <p id="weatherFor"></p>
-        <p>Temperature:<br> 
-            ${weekDays[0]}: ${weatherData.list[0].main.temp}<br>
-            ${weekDays[1]}: ${weatherData.list[8].main.temp}<br>
-            ${weekDays[2]}: ${weatherData.list[16].main.temp}<br>
-            ${weekDays[3]}: ${weatherData.list[24].main.temp}
-        </p>        <p id="temperature"></p>
-        <p>Feels Like:<br>
-            ${weekDays[0]}: ${weatherData.list[0].main.feels_like}<br>
-            ${weekDays[1]}: ${weatherData.list[8].main.feels_like}<br>
-            ${weekDays[2]}: ${weatherData.list[16].main.feels_like}<br>
-            ${weekDays[3]}: ${weatherData.list[24].main.feels_like}
-        </p>
-        <p id="feelsLike"></p>
-        <p>Sky Cover:<br>
-            ${weekDays[0]}: ${weatherData.list[0].weather[0].description}<br>
-            ${weekDays[1]}: ${weatherData.list[8].weather[0].description}<br>
-            ${weekDays[2]}: ${weatherData.list[16].weather[0].description}<br>
-            ${weekDays[3]}: ${weatherData.list[24].weather[0].description}
-        </p>
-        <p id="weather"></p>
-    `)
+        <section class="flex-item">
+            <h3 class ="day-name">${weekDays[0]}</h3>
+            <h4>Temperature</h4>
+            <p id="temp">${weatherData.list[0].main.temp}&#8457</p>
+            <hr>
+            <h4>Feels Like</h4>
+            <p id="feels-like">${weatherData.list[0].main.feels_like}&#8457</p>
+            <hr>
+            <h4>Sky Cover</h4>
+            <p id="sky-cover">${weatherData.list[0].weather[0].description}</p>
+        </section>
+        <section class="flex-item">
+            <h3 class ="day-name">${weekDays[1]}</h3>
+            <h4>Temperature</h4>
+            <p id="temp">${weatherData.list[8].main.temp}&#8457</p>
+            <hr>
+            <h4>Feels Like</h4>
+            <p id="feels-like">${weatherData.list[8].main.feels_like}&#8457</p>
+            <hr>
+            <h4>Sky Cover</h4>
+            <p id="sky-cover">${weatherData.list[8].weather[0].description}</p>
+        </section>
+        <section class="flex-item">
+            <h3 class ="day-name">${weekDays[2]}</h3>
+            <h4>Temperature</h4>
+            <p id="temp">${weatherData.list[16].main.temp}&#8457</p>
+            <hr>
+            <h4>Feels Like</h4>
+            <p id="feels-like">${weatherData.list[16].main.feels_like}&#8457</p>
+            <hr>
+            <h4>Sky Cover</h4>
+            <p id="sky-cover">${weatherData.list[16].weather[0].description}</p>
+        </section>
+        <section class="flex-item">
+            <h3 class ="day-name">${weekDays[3]}</h3>
+            <h4>Temperature</h4>
+            <p id="temp">${weatherData.list[24].main.temp}&#8457</p>
+            <hr>
+            <h4>Feels Like</h4>
+            <p id="feels-like">${weatherData.list[24].main.feels_like}&#8457</p>
+            <hr>
+            <h4>Sky Cover</h4>
+            <p id="sky-cover">${weatherData.list[24].weather[0].description}</p>
+        </section>
+    `);
+    $main.css({
+        "display": "flex",
+        "flex-wrap": "wrap",
+        "justify-content": "space-evenly"
+    });
+    const $day = $(".day-name");
+    $day.css({
+        "margin-top":"2px",
+        "margin-bottom":"10px",
+        "font-size": "30px",
+        "color":"white"
+    });
+    const $flex = $(".flex-item");
+    $flex.css({
+        "border-radius": "15px",
+        "padding": "1px",
+        "margin": "2px",
+        "height": "400px",
+        "width": "240px",
+        "background-color": "#c4a78d",
+        "border": "solid",
+        "box-shadow": "5px 5px 2px black",
+        "font-size": "18px"
+    });
 }
 
 function render_fiveday() {
     let d = new Date();
+    $h2.html(`Current Weather For: <strong>${weatherData.city.name}</strong>`);
     $main.html (`
-        <p>Weather For: <strong>${weatherData.city.name}</strong></p>
-        <p id="weatherFor"></p>
-        <p>Temperature:<br> 
-            ${weekDays[0]}: ${weatherData.list[0].main.temp}<br>
-            ${weekDays[1]}: ${weatherData.list[8].main.temp}<br>
-            ${weekDays[2]}: ${weatherData.list[16].main.temp}<br>
-            ${weekDays[3]}: ${weatherData.list[24].main.temp}<br>
-            ${weekDays[4]}: ${weatherData.list[32].main.temp}
-        </p>
-        <p id="temperature"></p>
-        <p>Feels Like:<br>
-            ${weekDays[0]}: ${weatherData.list[0].main.feels_like}<br>
-            ${weekDays[1]}: ${weatherData.list[8].main.feels_like}<br>
-            ${weekDays[2]}: ${weatherData.list[16].main.feels_like}<br>
-            ${weekDays[3]}: ${weatherData.list[24].main.feels_like}<br>
-            ${weekDays[4]}: ${weatherData.list[32].main.feels_like}
-        </p>
-        <p id="feelsLike"></p>
-        <p>Sky Cover:<br>
-            ${weekDays[0]}: ${weatherData.list[0].weather[0].description}<br>
-            ${weekDays[1]}: ${weatherData.list[8].weather[0].description}<br>
-            ${weekDays[2]}: ${weatherData.list[16].weather[0].description}<br>
-            ${weekDays[3]}: ${weatherData.list[24].weather[0].description}<br>
-            ${weekDays[4]}: ${weatherData.list[32].weather[0].description}
-        </p>
-        <p id="weather"></p>
-    `)
+        <section class="flex-item">
+            <h3 class ="day-name">${weekDays[0]}</h3>
+            <h4>Temperature</h4>
+            <p id="temp">${weatherData.list[0].main.temp}&#8457</p>
+            <hr>
+            <h4>Feels Like</h4>
+            <p id="feels-like">${weatherData.list[0].main.feels_like}&#8457</p>
+            <hr>
+            <h4>Sky Cover</h4>
+            <p id="sky-cover">${weatherData.list[0].weather[0].description}</p>
+        </section>
+        <section class="flex-item">
+            <h3 class ="day-name">${weekDays[1]}</h3>
+            <h4>Temperature</h4>
+            <p id="temp">${weatherData.list[8].main.temp}&#8457</p>
+            <hr>
+            <h4>Feels Like</h4>
+            <p id="feels-like">${weatherData.list[8].main.feels_like}&#8457</p>
+            <hr>
+            <h4>Sky Cover</h4>
+            <p id="sky-cover">${weatherData.list[8].weather[0].description}</p>
+        </section>
+        <section class="flex-item">
+            <h3 class ="day-name">${weekDays[2]}</h3>
+            <h4>Temperature</h4>
+            <p id="temp">${weatherData.list[16].main.temp}&#8457</p>
+            <hr>
+            <h4>Feels Like</h4>
+            <p id="feels-like">${weatherData.list[16].main.feels_like}&#8457</p>
+            <hr>
+            <h4>Sky Cover</h4>
+            <p id="sky-cover">${weatherData.list[16].weather[0].description}</p>
+        </section>
+        <section class="flex-item">
+            <h3 class ="day-name">${weekDays[3]}</h3>
+            <h4>Temperature</h4>
+            <p id="temp">${weatherData.list[24].main.temp}&#8457</p>
+            <hr>
+            <h4>Feels Like</h4>
+            <p id="feels-like">${weatherData.list[24].main.feels_like}&#8457</p>
+            <hr>
+            <h4>Sky Cover</h4>
+            <p id="sky-cover">${weatherData.list[24].weather[0].description}</p>
+        </section>
+        <section class="flex-item">
+            <h3 class ="day-name">${weekDays[4]}</h3>
+            <h4>Temperature</h4>
+            <p id="temp">${weatherData.list[32].main.temp}&#8457</p>
+            <hr>
+            <h4>Feels Like</h4>
+            <p id="feels-like">${weatherData.list[32].main.feels_like}&#8457</p>
+            <hr>
+            <h4>Sky Cover</h4>
+            <p id="sky-cover">${weatherData.list[32].weather[0].description}</p>
+        </section>
+    `);
+    $main.css({
+        "display": "flex",
+        "flex-wrap": "wrap",
+        "justify-content": "space-evenly"
+    });
+    const $day = $(".day-name");
+    $day.css({
+        "margin-top":"2px",
+        "margin-bottom":"10px",
+        "font-size": "30px",
+        "color":"white"
+    });
+    const $flex = $(".flex-item");
+    $flex.css({
+        "border-radius": "15px",
+        "padding": "1px",
+        "margin": "2px",
+        "height": "400px",
+        "width": "240px",
+        "background-color": "#c4a78d",
+        "border": "solid",
+        "box-shadow": "5px 5px 2px black",
+        "font-size": "18px"
+    });
 }
