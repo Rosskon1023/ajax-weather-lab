@@ -1,7 +1,7 @@
 // Constants - Data that does not Change:
-const BASE_URL = 'http://api.openweathermap.org/data/2.5/weather'
+const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather'
 const API_KEY = 'ccbaef0e44f670e826b88a1eb7a3c384';
-const FCST_URL = 'http://api.openweathermap.org/data/2.5/forecast'
+const FCST_URL = 'https://api.openweathermap.org/data/2.5/forecast'
 // ?q={city name}&units=imperial&appid={API key}'
 
 // Variables - Data that Changes
